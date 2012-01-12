@@ -1,7 +1,5 @@
 <html>
 <head>
-	<h1>Ruby on Rails Tutorial Sample App | <%= @title %></ht>
-
     <link rel="stylesheet" type="text/css" href="homestyle.css"/>
     <%= form_tag("/", :method => "post") do %>
     <%= label_tag(:q, "Search for:") %>
@@ -11,49 +9,14 @@
 
   <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <title>YouTube Player API Samples</title>
-    <script src="http://www.google.com/jsapi" type="text/javascript"></script>
-    <script type="text/javascript">
-      google.load("swfobject", "2.1");
-    </script>    
-    <script type="text/javascript">
-      function _run() {
-        /*
-        * Simple player embed
-        */ 
-        // The video to load.
-
-        
-        var videoID = "<%= @songid %>";
-        // Lets Flash from another domain call JavaScript
-        var params = { allowScriptAccess: "always" };
-        // The element id of the Flash embed
-        var atts = { id: "ytPlayer" };
-        // All of the magic handled by SWFObject (http://code.google.com/p/swfobject/)
-        swfobject.embedSWF("http://www.youtube.com/v/" + videoID + "?version=3&enablejsapi=1&playerapiid=player1", 
-                           "videoDiv", "400", "400", "9", null, null, params, atts);
-        }
-        
-        google.setOnLoadCallback(_run);
-        
-        function onYouTubePlayerReady(playerId) {
-            ytplayer = document.getElementById("ytPlayer");
-            ytplayer.addEventListener("onStateChange", "onytplayerStateChange");
-        }  
-        
-        function play() {
-          if (ytplayer) {
-            ytplayer.playVideo();
-          }
-        }
-        function pause() {
-          if (ytplayer) {
-            ytplayer.pauseVideo();
-          }
-        }
-       
-    </script>
+    <script type="text/javascript" src="swfobject.js"></script>
+    <script type="text/javascript" src = "ytplayer.js"></script>
 </head>
 <body style="font-family: Arial;border: 0 none;">
+    <script type="text/javascript">
+        initPlayer("<%=@songid%>")
+    </script>
+    <div id="name"><%=@title%></div>
     <div id="videoDiv">Loading...</div>
     <a href="javascript:void(0);" onclick="play();">Play</a>
     <a href="javascript:void(0);" onclick="pause();">Pause</a>

@@ -7,8 +7,11 @@ class HomeController < ApplicationController
     url = cl.videos[0].player_url.split('=')[1]
     @songid = url.split('&')[0]
     @title = cl.videos[0].title
-    @s = Song.new(:name => @title, :songid => @songid)
-    @s.save
+
+    if Song.where(:songid => @songid).size == 0
+	    @s = Song.new(:name => @title, :songid => @songid)
+    	@s.save
+    end
   end
 
 end

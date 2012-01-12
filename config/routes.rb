@@ -1,9 +1,9 @@
 Ytaudioplayer::Application.routes.draw do
+  resources :songs
+
   get "play/home"
 
   get "home/index"
-
-  resources :songs
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
