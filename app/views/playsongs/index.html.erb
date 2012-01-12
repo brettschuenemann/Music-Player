@@ -1,9 +1,7 @@
 <html>
 <head>
-	<h1>Ruby on Rails Tutorial Sample App | <%= @title %></ht>
-
-    <link rel="stylesheet" type="text/css" href="homestyle.css"/>
-    <%= form_tag("/", :method => "post") do %>
+	<link rel="stylesheet" type="text/css" href="homestyle.css"/>
+    <%= form_tag("/", :method => "get") do %>
     <%= label_tag(:q, "Search for:") %>
     <%= text_field_tag(:q) %>
     <%= submit_tag("Search") %>
@@ -19,11 +17,10 @@
       function _run() {
         /*
         * Simple player embed
-        */ 
-        // The video to load.
-
+        */
         
-        var videoID = "<%= @songid %>";
+        // The video to load.
+        var videoID = "VUjdiDeJ0xg&ob"
         // Lets Flash from another domain call JavaScript
         var params = { allowScriptAccess: "always" };
         // The element id of the Flash embed
