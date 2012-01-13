@@ -1,10 +1,15 @@
 Ytaudioplayer::Application.routes.draw do
+  devise_for :people
+
+  devise_for :users
+
   resources :songs
 
   get "play/home"
 
   get "home/index"
 
+  devise_for :people do get '/users/sign_out' => 'devise/sessions#destroy' end
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

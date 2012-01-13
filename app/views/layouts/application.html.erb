@@ -7,7 +7,14 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<div id="user_nav">
+    <% if person_signed_in? %>
+        Signed in as <%= current_person.email %>.  Not you?
+        <%= link_to 'Sign out', destroy_person_session_path,  :method => :delete %>
+    <% else %>
+        <%= link_to 'Register', new_person_registration_path %> or <%= link_to 'Sign in', new_person_session_path %>
+    <% end %>
+</div>
 <%= yield %>
 
 </body>

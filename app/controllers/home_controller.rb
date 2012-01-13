@@ -1,5 +1,7 @@
 require 'youtube_it'
 class HomeController < ApplicationController
+	before_filter :authenticate_person!
+		
   def index
   	song = params[:q]
  	client = YouTubeIt::Client.new
